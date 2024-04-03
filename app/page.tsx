@@ -138,7 +138,7 @@ const Home = () => {
         if (permission === 'granted') {
           const title = 'Push Notification Added';
           const options = {
-            body: 'This is the body of the notification',
+            body: 'Notification send successfully',
           };
           new Notification(title, options);
           // Increment notification count
