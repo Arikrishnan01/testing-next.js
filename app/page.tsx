@@ -208,7 +208,7 @@ const Home = () => {
                 },
               }}
             >
-              Send Push Notification
+              Send Notification
             </Button>
           </div>
         </div>
