@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #ECEFF1;
+    transition: background-color 0.5s ease-in-out;
+  }
+  
+  .top-section {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    gap: 130px;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .send-btn {
+    width: 200px;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .dark {
+    background-color: #212121;
+    color: white;
+  }
+  
