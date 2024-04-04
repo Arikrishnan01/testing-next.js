@@ -5,7 +5,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
-  const [notificationCount, setNotificationCount] = useState(0); // State for notification count
+  const [notificationCount, setNotificationCount] = useState(0);
   const [animateIcon, setAnimateIcon] = useState(false);
 
   const toggleDarkMode = () => {
@@ -18,21 +18,17 @@ const Home = () => {
         if (permission === 'granted') {
           const title = 'Push Notification Added';
           const options = {
-            body: 'Notification send successfully',
+            body: 'Notification sent successfully',
           };
           new Notification(title, options);
-          // Increment notification count
           setNotificationCount(notificationCount + 1);
         }
       });
     }
-    // Start the animation when button is clicked
     setAnimateIcon(true);
-    // Reset the animation after 500ms
     setTimeout(() => {
       setAnimateIcon(false);
     }, 500);
-    // Reset notification count after 5 seconds
     setTimeout(() => {
       setNotificationCount(0);
     }, 5000);
@@ -62,15 +58,21 @@ const Home = () => {
             />
           </div>
           <Box display="flex" justifyContent="center" alignItems="center" height="70vh" className="notification-icon">
-            <NotificationsNoneIcon
-              style={{
-                fontSize: 100,
-                color: '#3f51b5', // Change color of notification count
-                transition: 'transform 0.5s ease',
-                transform: animateIcon ? 'scale(1.1)' : 'scale(1)',
-              }}
-            />
-            <div className="notification-count">{notificationCount}</div>
+            <div className="notification-layer1">
+              <div className="notification-layer2">
+                <div className="notification-layer3">
+                  <NotificationsNoneIcon
+                    style={{
+                      fontSize: 100,
+                      color: '#3f51b5',
+                      transition: 'transform 0.5s ease',
+                      transform: animateIcon ? 'scale(1.1)' : 'scale(1)',
+                    }}
+                  />
+                  <div className="notification-count">{notificationCount}</div>
+                </div>
+              </div>
+            </div>
           </Box>
           <div className="button-container">
             <Button
@@ -78,13 +80,13 @@ const Home = () => {
               color="primary"
               onClick={handleButtonClick}
               sx={{
-                fontSize: '1rem', // Decreased font size
+                fontSize: '1rem',
                 fontFamily: 'Arial, sans-serif',
-                backgroundColor: '#2196F3',
+                backgroundImage: 'linear-gradient(to right, #2196F3, #1976D2)',
                 boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.16)',
                 transition: 'background-color 0.3s ease',
-                '&:hover': { // Add hover effect
-                  backgroundColor: '#1976D2', // Darker background color on hover
+                '&:hover': {
+                  backgroundImage: 'linear-gradient(to right, #1976D2, #0D47A1)',
                 },
               }}
             >
@@ -127,12 +129,40 @@ const Home = () => {
           position: relative;
         }
 
+        .notification-layer1 {
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification-layer2 {
+          padding: 20px;
+          background-color: #f0f0f0;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .notification-layer3 {
+          padding: 20px;
+          background-color: #e0e0e0;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
         .notification-count {
           position: absolute;
-          top: 5px;
-          right: 5px;
-          background-color: #ffffff; // Background color of count
-          color: #3f51b5; // Color of count
+          top: -10px;
+          right: -10px;
+          background-color: #ffffff;
+          color: #3f51b5;
           width: 30px;
           height: 30px;
           border-radius: 50%;
@@ -155,3 +185,4 @@ const Home = () => {
 };
 
 export default Home;
+
